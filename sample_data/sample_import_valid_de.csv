@@ -1,0 +1,193 @@
+﻿Datum;Linie;Maschine;Schicht;Artikelnummer;Sollmenge;Istmenge;Gutteile;Ausschuss;Schichtdauer;Pausenzeit;Planbelegungszeit;Laufzeit;Stillstandszeit;Stillstandsgrund;Fehlerart;Taktzeit
+01.10.2026;L1;M-01;F;P-100;422;402;398;4;480;30;450;375;75;Mechanical failure;Dimensional deviation;48,5
+01.10.2026;L1;M-01;S;P-100;422;410;406;4;480;30;450;382;68;Mechanical failure;Material defect;48,5
+01.10.2026;L1;M-01;N;P-100;422;480;473;7;480;30;450;450;0;;Dimensional deviation;48,5
+01.10.2026;L1;M-02;F;P-110;675;791;779;12;480;30;450;450;0;;Dimensional deviation;30,5
+01.10.2026;L1;M-02;S;P-110;675;758;745;13;480;30;450;440;10;Quality inspection;Dimensional deviation;30,5
+01.10.2026;L1;M-02;N;P-110;675;705;689;16;480;30;450;440;10;Staff shortage;Dimensional deviation;30,5
+01.10.2026;L1;M-03;F;P-100;422;450;441;9;480;30;450;428;22;Mechanical failure;Dimensional deviation;48,5
+01.10.2026;L1;M-03;S;P-100;422;469;461;8;480;30;450;450;0;;Dimensional deviation;48,5
+01.10.2026;L1;M-03;N;P-100;422;433;426;7;480;30;450;450;0;;Dimensional deviation;48,5
+01.10.2026;L1;M-04;F;P-110;675;670;659;11;480;30;450;409;41;Material shortage;Dimensional deviation;30,5
+01.10.2026;L1;M-04;S;P-110;675;693;678;15;480;30;450;419;31;Mechanical failure;Surface defect;30,5
+01.10.2026;L1;M-04;N;P-110;675;619;610;9;480;30;450;401;49;Staff shortage;Burr;30,5
+01.10.2026;L2;M-05;F;P-200;213;202;199;3;480;30;450;383;67;Setup / changeover;Dimensional deviation;95,5
+01.10.2026;L2;M-05;S;P-200;213;193;190;3;480;30;450;366;84;Staff shortage;Dimensional deviation;95,5
+01.10.2026;L2;M-05;N;P-200;213;219;212;7;480;30;450;415;35;Electrical failure;Dimensional deviation;95,5
+01.10.2026;L2;M-06;F;P-210;251;229;227;2;480;90;390;345;45;Mechanical failure;Dimensional deviation;70,5
+01.10.2026;L2;M-06;S;P-210;289;286;283;3;480;30;450;420;30;Material shortage;Surface defect;70,5
+01.10.2026;L2;M-06;N;P-210;289;283;275;8;480;30;450;415;35;Mechanical failure;Burr;70,5
+01.10.2026;L2;M-07;F;P-200;213;233;230;3;480;30;450;436;14;Tool change;Surface defect;95,5
+01.10.2026;L2;M-07;S;P-200;213;242;238;4;480;30;450;450;0;;Surface defect;95,5
+01.10.2026;L2;M-07;N;P-200;213;206;202;4;480;30;450;393;57;Material shortage;Surface defect;95,5
+01.10.2026;L2;M-08;F;P-210;289;290;279;11;480;30;450;420;30;Mechanical failure;Dimensional deviation;70,5
+01.10.2026;L2;M-08;S;P-210;289;272;265;7;480;30;450;403;47;Material shortage;Dimensional deviation;70,5
+01.10.2026;L2;M-08;N;P-210;289;285;278;7;480;30;450;406;44;Mechanical failure;Surface defect;70,5
+01.10.2026;L3;M-09;F;P-300;145;163;161;2;480;30;450;435;15;Mechanical failure;Assembly error;140,5
+01.10.2026;L3;M-09;S;P-300;145;155;153;2;480;30;450;424;26;Mechanical failure;Assembly error;140,5
+01.10.2026;L3;M-09;N;P-300;145;162;158;4;480;30;450;450;0;;Assembly error;140,5
+01.10.2026;L3;M-10;F;P-310;338;295;291;4;480;30;450;372;78;Staff shortage;Assembly error;60,5
+01.10.2026;L3;M-10;S;P-310;338;237;230;7;480;30;450;293;157;Mechanical failure;Assembly error;60,5
+01.10.2026;L3;M-10;N;P-310;338;308;300;8;480;30;450;418;32;Tool change;Assembly error;60,5
+01.10.2026;L3;M-11;F;P-300;145;150;149;1;480;30;450;433;17;Setup / changeover;Functional test failed;140,5
+01.10.2026;L3;M-11;S;P-300;145;143;140;3;480;30;450;397;53;Setup / changeover;Assembly error;140,5
+01.10.2026;L3;M-11;N;P-300;145;136;133;3;480;30;450;409;41;Setup / changeover;Missing component;140,5
+01.10.2026;L3;M-12;F;P-310;338;352;345;7;480;30;450;410;40;Staff shortage;Assembly error;60,5
+01.10.2026;L3;M-12;S;P-310;338;351;347;4;480;30;450;406;44;Mechanical failure;Assembly error;60,5
+01.10.2026;L3;M-12;N;P-310;338;381;373;8;480;30;450;450;0;;Functional test failed;60,5
+02.10.2026;L1;M-01;F;P-100;422;477;471;6;480;30;450;450;0;;Dimensional deviation;48,5
+02.10.2026;L1;M-01;S;P-100;422;431;422;9;480;30;450;410;40;Electrical failure;Dimensional deviation;48,5
+02.10.2026;L1;M-01;N;P-100;422;433;427;6;480;30;450;414;36;Tool change;Surface defect;48,5
+02.10.2026;L1;M-02;F;P-110;675;746;738;8;480;30;450;450;0;;Material defect;30,5
+02.10.2026;L1;M-02;S;P-110;675;726;716;10;480;30;450;438;12;Quality inspection;Surface defect;30,5
+02.10.2026;L1;M-02;N;P-110;675;656;646;10;480;30;450;418;32;Electrical failure;Dimensional deviation;30,5
+02.10.2026;L1;M-03;F;P-100;422;469;461;8;480;30;450;437;13;Material shortage;Dimensional deviation;48,5
+02.10.2026;L1;M-03;S;P-100;422;448;443;5;480;30;450;430;20;Quality inspection;Surface defect;48,5
+02.10.2026;L1;M-03;N;P-100;422;406;396;10;480;30;450;387;63;Setup / changeover;Dimensional deviation;48,5
+02.10.2026;L1;M-04;F;P-110;675;632;625;7;480;30;450;374;76;Mechanical failure;Dimensional deviation;30,5
+02.10.2026;L1;M-04;S;P-110;675;710;702;8;480;30;450;426;24;Mechanical failure;Surface defect;30,5
+02.10.2026;L1;M-04;N;P-110;675;675;669;6;480;30;450;418;32;Mechanical failure;Dimensional deviation;30,5
+02.10.2026;L2;M-05;F;P-200;213;214;213;1;480;30;450;416;34;Electrical failure;Burr;95,5
+02.10.2026;L2;M-05;S;P-200;213;186;184;2;480;30;450;370;80;Setup / changeover;Dimensional deviation;95,5
+02.10.2026;L2;M-05;N;P-200;213;187;180;7;480;30;450;371;79;Electrical failure;Dimensional deviation;95,5
+02.10.2026;L2;M-06;F;P-210;289;300;296;4;480;30;450;432;18;Tool change;Surface defect;70,5
+02.10.2026;L2;M-06;S;P-210;289;282;277;5;480;30;450;423;27;Quality inspection;Burr;70,5
+02.10.2026;L2;M-06;N;P-210;289;306;304;2;480;30;450;432;18;Tool change;Surface defect;70,5
+02.10.2026;L2;M-07;F;P-200;213;177;170;7;480;30;450;329;121;Mechanical failure;Dimensional deviation;95,5
+02.10.2026;L2;M-07;S;P-200;213;232;231;1;480;30;450;450;0;;Dimensional deviation;95,5
+02.10.2026;L2;M-07;N;P-200;213;236;231;5;480;30;450;450;0;;Dimensional deviation;95,5
+02.10.2026;L2;M-08;F;P-210;289;277;274;3;480;30;450;398;52;Tool change;Surface defect;70,5
+02.10.2026;L2;M-08;S;P-210;289;305;301;4;480;30;450;422;28;Electrical failure;Surface defect;70,5
+02.10.2026;L2;M-08;N;P-210;289;296;288;8;480;30;450;443;7;Tool change;Dimensional deviation;70,5
+02.10.2026;L3;M-09;F;P-300;145;158;154;4;480;30;450;438;12;Electrical failure;Assembly error;140,5
+02.10.2026;L3;M-09;S;P-300;145;164;160;4;480;30;450;450;0;;Missing component;140,5
+02.10.2026;L3;M-09;N;P-300;125;138;131;7;480;90;390;373;17;Mechanical failure;Assembly error;140,5
+02.10.2026;L3;M-10;F;P-310;292;215;210;5;480;90;390;252;138;Mechanical failure;Assembly error;60,5
+02.10.2026;L3;M-10;S;P-310;338;300;289;11;480;30;450;367;83;Mechanical failure;Assembly error;60,5
+02.10.2026;L3;M-10;N;P-310;292;215;208;7;480;90;390;287;103;Electrical failure;Assembly error;60,5
+02.10.2026;L3;M-11;F;P-300;145;161;157;4;480;30;450;435;15;Material shortage;Functional test failed;140,5
+02.10.2026;L3;M-11;S;P-300;145;150;146;4;480;30;450;424;26;Setup / changeover;Functional test failed;140,5
+02.10.2026;L3;M-11;N;P-300;145;134;130;4;480;30;450;382;68;Material shortage;Missing component;140,5
+02.10.2026;L3;M-12;F;P-310;338;388;381;7;480;30;450;439;11;Material shortage;Functional test failed;60,5
+02.10.2026;L3;M-12;S;P-310;338;331;328;3;480;30;450;396;54;Mechanical failure;Functional test failed;60,5
+02.10.2026;L3;M-12;N;P-310;338;347;336;11;480;30;450;428;22;Material shortage;Assembly error;60,5
+03.10.2026;L1;M-01;F;P-100;422;480;469;11;480;30;450;436;14;Material shortage;Burr;48,5
+03.10.2026;L1;M-02;F;P-110;675;696;689;7;480;30;450;409;41;Setup / changeover;Dimensional deviation;30,5
+03.10.2026;L1;M-03;F;P-100;422;451;445;6;480;30;450;431;19;Tool change;Dimensional deviation;48,5
+03.10.2026;L1;M-04;F;P-110;675;657;650;7;480;30;450;406;44;Staff shortage;Burr;30,5
+03.10.2026;L2;M-05;F;P-200;213;241;237;4;480;30;450;439;11;Electrical failure;Dimensional deviation;95,5
+03.10.2026;L2;M-06;F;P-210;289;310;307;3;480;30;450;450;0;;Dimensional deviation;70,5
+03.10.2026;L2;M-07;F;P-200;213;241;239;2;480;30;450;450;0;;Dimensional deviation;95,5
+03.10.2026;L2;M-08;F;P-210;289;259;257;2;480;30;450;387;63;Setup / changeover;Dimensional deviation;70,5
+03.10.2026;L3;M-09;F;P-300;145;146;140;6;480;30;450;407;43;Material shortage;Missing component;140,5
+03.10.2026;L3;M-10;F;P-310;338;285;278;7;480;30;450;365;85;Setup / changeover;Assembly error;60,5
+03.10.2026;L3;M-11;F;P-300;145;151;147;4;480;30;450;418;32;Quality inspection;Functional test failed;140,5
+03.10.2026;L3;M-12;F;P-310;338;355;350;5;480;30;450;424;26;Quality inspection;Assembly error;60,5
+05.10.2026;L1;M-01;F;P-110;675;589;587;2;480;30;450;355;95;Setup / changeover;Dimensional deviation;30,5
+05.10.2026;L1;M-01;S;P-110;675;763;754;9;480;30;450;445;5;Tool change;Dimensional deviation;30,5
+05.10.2026;L1;M-01;N;P-110;675;649;629;20;480;30;450;394;56;Setup / changeover;Dimensional deviation;30,5
+05.10.2026;L1;M-02;F;P-100;422;408;401;7;480;30;450;383;67;Setup / changeover;Surface defect;48,5
+05.10.2026;L1;M-02;S;P-100;422;494;488;6;480;30;450;450;0;;Material defect;48,5
+05.10.2026;L1;M-02;N;P-100;422;366;356;10;480;30;450;366;84;Mechanical failure;Dimensional deviation;48,5
+05.10.2026;L1;M-03;F;P-110;675;601;595;6;480;30;450;361;89;Mechanical failure;Dimensional deviation;30,5
+05.10.2026;L1;M-03;S;P-110;675;722;714;8;480;30;450;417;33;Quality inspection;Dimensional deviation;30,5
+05.10.2026;L1;M-03;N;P-110;675;566;558;8;480;30;450;363;87;Setup / changeover;Dimensional deviation;30,5
+05.10.2026;L1;M-04;F;P-100;422;400;392;8;480;30;450;393;57;Setup / changeover;Dimensional deviation;48,5
+05.10.2026;L1;M-04;S;P-100;422;404;397;7;480;30;450;400;50;Setup / changeover;Surface defect;48,5
+05.10.2026;L1;M-04;N;P-100;422;451;442;9;480;30;450;450;0;;Dimensional deviation;48,5
+05.10.2026;L2;M-05;F;P-210;289;279;278;1;480;30;450;393;57;Setup / changeover;Surface defect;70,5
+05.10.2026;L2;M-05;S;P-210;289;278;274;4;480;30;450;384;66;Staff shortage;Dimensional deviation;70,5
+05.10.2026;L2;M-05;N;P-210;289;319;312;7;480;30;450;450;0;;Dimensional deviation;70,5
+05.10.2026;L2;M-06;F;P-200;213;168;165;3;480;30;450;331;119;Material shortage;Dimensional deviation;95,5
+05.10.2026;L2;M-06;S;P-200;213;239;233;6;480;30;450;438;12;Tool change;Dimensional deviation;95,5
+05.10.2026;L2;M-06;N;P-200;213;229;222;7;480;30;450;430;20;Material shortage;Burr;95,5
+05.10.2026;L2;M-07;F;P-210;289;247;244;3;480;30;450;346;104;Mechanical failure;Burr;70,5
+05.10.2026;L2;M-07;S;P-210;289;273;265;8;480;30;450;377;73;Mechanical failure;Burr;70,5
+05.10.2026;L2;M-07;N;P-210;289;305;300;5;480;30;450;431;19;Material shortage;Dimensional deviation;70,5
+05.10.2026;L2;M-08;F;P-200;213;196;192;4;480;30;450;398;52;Setup / changeover;Surface defect;95,5
+05.10.2026;L2;M-08;S;P-200;213;220;213;7;480;30;450;404;46;Mechanical failure;Dimensional deviation;95,5
+05.10.2026;L2;M-08;N;P-200;213;189;188;1;480;30;450;352;98;Setup / changeover;Surface defect;95,5
+05.10.2026;L3;M-09;F;P-310;338;363;357;6;480;30;450;410;40;Setup / changeover;Assembly error;60,5
+05.10.2026;L3;M-09;S;P-310;338;244;241;3;480;30;450;273;177;Mechanical failure;Functional test failed;60,5
+05.10.2026;L3;M-09;N;P-310;292;317;311;6;480;90;390;390;0;;Assembly error;60,5
+05.10.2026;L3;M-10;F;P-300;145;138;133;5;480;30;450;369;81;Setup / changeover;Assembly error;140,5
+05.10.2026;L3;M-10;S;P-300;145;125;123;2;480;30;450;374;76;Staff shortage;Functional test failed;140,5
+05.10.2026;L3;M-10;N;P-300;145;155;148;7;480;30;450;450;0;;Assembly error;140,5
+05.10.2026;L3;M-11;F;P-310;338;306;302;4;480;30;450;356;94;Setup / changeover;Assembly error;60,5
+05.10.2026;L3;M-11;S;P-310;338;367;358;9;480;30;450;436;14;Tool change;Assembly error;60,5
+05.10.2026;L3;M-11;N;P-310;338;354;346;8;480;30;450;443;7;Electrical failure;Assembly error;60,5
+05.10.2026;L3;M-12;F;P-300;145;134;133;1;480;30;450;371;79;Electrical failure;Assembly error;140,5
+05.10.2026;L3;M-12;S;P-300;145;154;149;5;480;30;450;438;12;Material shortage;Assembly error;140,5
+05.10.2026;L3;M-12;N;P-300;145;139;139;0;480;30;450;390;60;Electrical failure;;140,5
+06.10.2026;L1;M-01;F;P-110;675;761;756;5;480;30;450;437;13;Staff shortage;Dimensional deviation;30,5
+06.10.2026;L1;M-01;S;P-110;675;729;719;10;480;30;450;430;20;Mechanical failure;Surface defect;30,5
+06.10.2026;L1;M-01;N;P-110;675;663;653;10;480;30;450;400;50;Staff shortage;Surface defect;30,5
+06.10.2026;L1;M-02;F;P-100;422;470;461;9;480;30;450;438;12;Material shortage;Dimensional deviation;48,5
+06.10.2026;L1;M-02;S;P-100;422;454;449;5;480;30;450;423;27;Mechanical failure;Dimensional deviation;48,5
+06.10.2026;L1;M-02;N;P-100;422;359;351;8;480;30;450;346;104;Electrical failure;Dimensional deviation;48,5
+06.10.2026;L1;M-03;F;P-110;675;528;519;9;480;30;450;337;113;Mechanical failure;Dimensional deviation;30,5
+06.10.2026;L1;M-03;S;P-110;675;563;553;10;480;30;450;341;109;Electrical failure;Material defect;30,5
+06.10.2026;L1;M-03;N;P-110;675;717;705;12;480;30;450;439;11;Staff shortage;Dimensional deviation;30,5
+06.10.2026;L1;M-04;F;P-100;422;371;366;5;480;30;450;371;79;Electrical failure;Dimensional deviation;48,5
+06.10.2026;L1;M-04;S;P-100;422;324;314;10;480;30;450;333;117;Staff shortage;Dimensional deviation;48,5
+06.10.2026;L1;M-04;N;P-100;422;339;327;12;480;30;450;335;115;Mechanical failure;Dimensional deviation;48,5
+06.10.2026;L2;M-05;F;P-210;289;304;301;3;480;30;450;426;24;Staff shortage;Dimensional deviation;70,5
+06.10.2026;L2;M-05;S;P-210;289;324;320;4;480;30;450;440;10;Material shortage;Dimensional deviation;70,5
+06.10.2026;L2;M-05;N;P-210;289;248;242;6;480;30;450;358;92;Mechanical failure;Dimensional deviation;70,5
+06.10.2026;L2;M-06;F;P-200;213;210;206;4;480;30;450;392;58;Staff shortage;Dimensional deviation;95,5
+06.10.2026;L2;M-06;S;P-200;213;230;223;7;480;30;450;450;0;;Surface defect;95,5
+06.10.2026;L2;M-06;N;P-200;213;196;192;4;480;30;450;397;53;Material shortage;Dimensional deviation;95,5
+06.10.2026;L2;M-07;F;P-210;289;313;308;5;480;30;450;424;26;Electrical failure;Surface defect;70,5
+06.10.2026;L2;M-07;S;P-210;289;327;322;5;480;30;450;438;12;Tool change;Dimensional deviation;70,5
+06.10.2026;L2;M-07;N;P-210;289;271;268;3;480;30;450;399;51;Setup / changeover;Material defect;70,5
+06.10.2026;L2;M-08;F;P-200;185;162;157;5;480;90;390;300;90;Mechanical failure;Dimensional deviation;95,5
+06.10.2026;L2;M-08;S;P-200;213;219;216;3;480;30;450;431;19;Mechanical failure;Dimensional deviation;95,5
+06.10.2026;L2;M-08;N;P-200;213;149;146;3;480;30;450;300;150;Material shortage;Burr;95,5
+06.10.2026;L3;M-09;F;P-310;338;371;367;4;480;30;450;436;14;Quality inspection;Assembly error;60,5
+06.10.2026;L3;M-09;S;P-310;292;249;246;3;480;90;390;309;81;Mechanical failure;Functional test failed;60,5
+06.10.2026;L3;M-09;N;P-310;338;295;287;8;480;30;450;384;66;Setup / changeover;Assembly error;60,5
+06.10.2026;L3;M-10;F;P-300;145;142;135;7;480;30;450;410;40;Staff shortage;Missing component;140,5
+06.10.2026;L3;M-10;S;P-300;145;132;128;4;480;30;450;406;44;Tool change;Assembly error;140,5
+06.10.2026;L3;M-10;N;P-300;145;80;78;2;480;30;450;246;204;Mechanical failure;Functional test failed;140,5
+06.10.2026;L3;M-11;F;P-310;338;377;372;5;480;30;450;434;16;Material shortage;Assembly error;60,5
+06.10.2026;L3;M-11;S;P-310;338;287;283;4;480;30;450;341;109;Mechanical failure;Assembly error;60,5
+06.10.2026;L3;M-11;N;P-310;338;303;295;8;480;30;450;369;81;Mechanical failure;Assembly error;60,5
+06.10.2026;L3;M-12;F;P-300;145;164;161;3;480;30;450;427;23;Material shortage;Missing component;140,5
+06.10.2026;L3;M-12;S;P-300;145;159;154;5;480;30;450;445;5;Tool change;Assembly error;140,5
+06.10.2026;L3;M-12;N;P-300;145;157;155;2;480;30;450;450;0;;Assembly error;140,5
+07.10.2026;L1;M-01;F;P-110;675;770;759;11;480;30;450;437;13;Staff shortage;Dimensional deviation;30,5
+07.10.2026;L1;M-01;S;P-110;675;778;776;2;480;30;450;450;0;;Dimensional deviation;30,5
+07.10.2026;L1;M-01;N;P-110;675;708;693;15;480;30;450;440;10;Material shortage;Dimensional deviation;30,5
+07.10.2026;L1;M-02;F;P-100;422;456;452;4;480;30;450;432;18;Tool change;Material defect;48,5
+07.10.2026;L1;M-02;S;P-100;422;403;394;9;480;30;450;390;60;Electrical failure;Surface defect;48,5
+07.10.2026;L1;M-02;N;P-100;422;467;460;7;480;30;450;450;0;;Dimensional deviation;48,5
+07.10.2026;L1;M-03;F;P-110;675;696;693;3;480;30;450;423;27;Material shortage;Dimensional deviation;30,5
+07.10.2026;L1;M-03;S;P-110;675;721;712;9;480;30;450;431;19;Staff shortage;Dimensional deviation;30,5
+07.10.2026;L1;M-03;N;P-110;585;451;446;5;480;90;390;295;95;Mechanical failure;Dimensional deviation;30,5
+07.10.2026;L1;M-04;F;P-100;366;307;299;8;480;90;390;302;88;Setup / changeover;Material defect;48,5
+07.10.2026;L1;M-04;S;P-100;422;421;416;5;480;30;450;409;41;Material shortage;Other;48,5
+07.10.2026;L1;M-04;N;P-100;422;404;395;9;480;30;450;421;29;Quality inspection;Dimensional deviation;48,5
+07.10.2026;L2;M-05;F;P-210;289;325;319;6;480;30;450;450;0;;Burr;70,5
+07.10.2026;L2;M-05;S;P-210;289;277;274;3;480;30;450;432;18;Setup / changeover;Dimensional deviation;70,5
+07.10.2026;L2;M-05;N;P-210;289;301;294;7;480;30;450;438;12;Electrical failure;Dimensional deviation;70,5
+07.10.2026;L2;M-06;F;P-200;213;230;227;3;480;30;450;430;20;Electrical failure;Dimensional deviation;95,5
+07.10.2026;L2;M-06;S;P-200;213;204;199;5;480;30;450;408;42;Material shortage;Dimensional deviation;95,5
+07.10.2026;L2;M-06;N;P-200;213;190;185;5;480;30;450;386;64;Mechanical failure;Burr;95,5
+07.10.2026;L2;M-07;F;P-210;289;305;300;5;480;30;450;427;23;Setup / changeover;Burr;70,5
+07.10.2026;L2;M-07;S;P-210;289;272;268;4;480;30;450;375;75;Electrical failure;Dimensional deviation;70,5
+07.10.2026;L2;M-07;N;P-210;289;266;258;8;480;30;450;368;82;Mechanical failure;Surface defect;70,5
+07.10.2026;L2;M-08;F;P-200;213;216;214;2;480;30;450;418;32;Material shortage;Dimensional deviation;95,5
+07.10.2026;L2;M-08;S;P-200;213;195;192;3;480;30;450;371;79;Mechanical failure;Surface defect;95,5
+07.10.2026;L2;M-08;N;P-200;213;161;156;5;480;30;450;336;114;Staff shortage;Material defect;95,5
+07.10.2026;L3;M-09;F;P-310;338;341;334;7;480;30;450;387;63;Setup / changeover;Assembly error;60,5
+07.10.2026;L3;M-09;S;P-310;338;370;363;7;480;30;450;434;16;Electrical failure;Missing component;60,5
+07.10.2026;L3;M-09;N;P-310;338;341;329;12;480;30;450;430;20;Staff shortage;Functional test failed;60,5
+07.10.2026;L3;M-10;F;P-300;145;145;143;2;480;30;450;434;16;Quality inspection;Functional test failed;140,5
+07.10.2026;L3;M-10;S;P-300;145;111;108;3;480;30;450;331;119;Mechanical failure;Assembly error;140,5
+07.10.2026;L3;M-10;N;P-300;145;120;115;5;480;30;450;379;71;Mechanical failure;Assembly error;140,5
+07.10.2026;L3;M-11;F;P-310;338;340;334;6;480;30;450;413;37;Mechanical failure;Assembly error;60,5
+07.10.2026;L3;M-11;S;P-310;338;381;378;3;480;30;450;450;0;;Assembly error;60,5
+07.10.2026;L3;M-11;N;P-310;338;357;346;11;480;30;450;445;5;Tool change;Assembly error;60,5
+07.10.2026;L3;M-12;F;P-300;145;176;174;2;480;30;450;450;0;;Assembly error;140,5
+07.10.2026;L3;M-12;S;P-300;145;165;161;4;480;30;450;450;0;;Assembly error;140,5
+07.10.2026;L3;M-12;N;P-300;145;166;164;2;480;30;450;450;0;;Assembly error;140,5

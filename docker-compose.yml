@@ -1,0 +1,130 @@
+# FactoryPulse AI
+#
+#   Single workstation / demo (plain HTTP on http://localhost:8080):
+#     cp .env.example .env            # set POSTGRES_PASSWORD (and FP_ENVIRONMENT=demo for a demo system)
+#     docker compose up -d --build
+#
+#   Multi-user LAN installation (HTTPS) – see docs/INSTALLATION.md:
+#     docker compose -f docker-compose.yml -f docker-compose.lan.yml up -d --build
+#
+#   Optional ClamAV malware scanner for evidence files (adds the "clamav" service):
+#     COMPOSE_PROFILES=clamav and FP_EVIDENCE_SCANNER=clamd in .env
+name: factorypulse
+
+x-backend-env: &backend-env
+  FP_DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-factorypulse}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-factorypulse}
+  FP_ENVIRONMENT: ${FP_ENVIRONMENT:-production}
+  FP_MAX_UPLOAD_MB: ${FP_MAX_UPLOAD_MB:-10}
+  FP_MAX_EVIDENCE_MB: ${FP_MAX_EVIDENCE_MB:-10}
+  FP_MAX_IMPORT_ROWS: ${FP_MAX_IMPORT_ROWS:-100000}
+  # empty = automatic: production NEVER loads synthetic demo data; FP_ENVIRONMENT=demo does
+  FP_SEED_DEMO_ON_STARTUP: ${FP_SEED_DEMO_ON_STARTUP:-}
+  FP_ENABLE_DEMO_TOOLS: ${FP_ENABLE_DEMO_TOOLS:-}
+  FP_COOKIE_SECURE: ${FP_COOKIE_SECURE:-true}
+  FP_TIMEZONE: ${FP_TIMEZONE:-Europe/Berlin}
+  FP_SESSION_IDLE_MINUTES: ${FP_SESSION_IDLE_MINUTES:-120}
+  FP_SESSION_ABSOLUTE_HOURS: ${FP_SESSION_ABSOLUTE_HOURS:-12}
+  FP_BACKUP_RETENTION: ${FP_BACKUP_RETENTION:-14}
+  FP_CORS_ORIGINS: ${FP_CORS_ORIGINS:-http://localhost:8080}
+  FP_LOG_LEVEL: ${FP_LOG_LEVEL:-INFO}
+  # background worker (alert rules, scanner health check, evidence scans, evidence file reconciliation)
+  FP_ALERT_INTERVAL_SECONDS: ${FP_ALERT_INTERVAL_SECONDS:-300}
+  FP_JOB_MAX_ATTEMPTS: ${FP_JOB_MAX_ATTEMPTS:-3}
+  FP_JOB_RETRY_BASE_SECONDS: ${FP_JOB_RETRY_BASE_SECONDS:-10}
+  # malware scanning of evidence files: none | clamd | command
+  FP_EVIDENCE_SCANNER: ${FP_EVIDENCE_SCANNER:-none}
+  FP_CLAMD_HOST: ${FP_CLAMD_HOST:-clamav}
+  FP_CLAMD_PORT: ${FP_CLAMD_PORT:-3310}
+  FP_EVIDENCE_SCAN_COMMAND: ${FP_EVIDENCE_SCAN_COMMAND:-}
+  FP_EVIDENCE_SCAN_MAX_ATTEMPTS: ${FP_EVIDENCE_SCAN_MAX_ATTEMPTS:-5}
+  FP_EVIDENCE_SCANNER_SELFTEST_EICAR: ${FP_EVIDENCE_SCANNER_SELFTEST_EICAR:-true}
+  FP_EVIDENCE_ORPHAN_GRACE_SECONDS: ${FP_EVIDENCE_ORPHAN_GRACE_SECONDS:-3600}
+
+services:
+  db:
+    image: ${FP_POSTGRES_IMAGE:-postgres:16-alpine}
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-factorypulse}
+      POSTGRES_USER: ${POSTGRES_USER:-factorypulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # Not published to the host on purpose.
+
+  backend:
+    image: factorypulse/backend:${FP_VERSION:-0.3.3}
+    build:
+      context: ./backend
+      args:
+        BUILD_SHA: ${FP_BUILD_SHA:-dev}
+        PYTHON_IMAGE: ${FP_PYTHON_IMAGE:-python:3.12-slim}
+        PGDG: ${FP_BUILD_PGDG:-true}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *backend-env
+      # one-time bootstrap of the first administrator (ignored once any user exists)
+      FP_INITIAL_ADMIN_EMAIL: ${FP_INITIAL_ADMIN_EMAIL:-}
+      FP_INITIAL_ADMIN_PASSWORD: ${FP_INITIAL_ADMIN_PASSWORD:-}
+    volumes:
+      - app-data:/data   # private uploads, reports, evidence (+quarantine) and backups – never served statically
+
+  # Scheduled background jobs (alert rule evaluation, evidence re-scans). Separate process from the API;
+  # several replicas are safe (PostgreSQL advisory locks).
+  worker:
+    image: factorypulse/backend:${FP_VERSION:-0.3.3}
+    build:
+      context: ./backend
+      args:
+        BUILD_SHA: ${FP_BUILD_SHA:-dev}
+        PYTHON_IMAGE: ${FP_PYTHON_IMAGE:-python:3.12-slim}
+        PGDG: ${FP_BUILD_PGDG:-true}
+    restart: unless-stopped
+    command: ["python", "-m", "app.worker"]
+    depends_on:
+      backend:
+        condition: service_healthy   # the API container applies the migrations
+    environment:
+      <<: *backend-env
+      FP_RUN_MIGRATIONS: "false"
+    volumes:
+      - app-data:/data
+    healthcheck:
+      disable: true
+
+  frontend:
+    image: factorypulse/frontend:${FP_VERSION:-0.3.3}
+    build:
+      context: ./frontend
+      args:
+        NODE_IMAGE: ${FP_NODE_IMAGE:-node:22-alpine}
+        NGINX_IMAGE: ${FP_NGINX_IMAGE:-nginx:1.27-alpine}
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      FP_TLS: "false"
+    ports:
+      - "${FP_HTTP_PORT:-8080}:80"
+
+  clamav:
+    profiles: ["clamav"]
+    image: ${FP_CLAMAV_IMAGE:-clamav/clamav:1.4}
+    restart: unless-stopped
+    volumes:
+      - clamav-db:/var/lib/clamav   # signatures are updated by freshclam inside the container
+    # not published: only the backend/worker talk to clamd (TCP 3310) on the internal network
+
+volumes:
+  db-data:
+  app-data:
+  clamav-db:

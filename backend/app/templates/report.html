@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<title>{{ r.title }} – {{ r.company_name }}</title>
+<style>
+  @page {
+    size: A4; margin: 16mm 14mm 18mm 14mm;
+    @bottom-left { content: "{{ r.company_name }} · {{ r.title }} · {{ period }}"; font-size: 7pt; color: #64748b; font-family: "Inter", "DejaVu Sans", sans-serif; }
+    @bottom-right { content: "{{ t('page') }} " counter(page) " {{ t('of') }} " counter(pages); font-size: 7pt; color: #64748b; font-family: "Inter", "DejaVu Sans", sans-serif; }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: #0f172a; font-size: 8.5pt; line-height: 1.4; }
+  .header { background: #0f2744; color: white; padding: 12px 16px; border-radius: 6px; display: flex; justify-content: space-between; }
+  .brand { font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: #5eead4; font-weight: 700; }
+  h1 { font-size: 17pt; margin: 2px 0 0; font-weight: 700; }
+  .company { font-size: 10pt; color: #cbd5e1; margin-top: 2px; }
+  .meta { text-align: right; font-size: 7.5pt; color: #cbd5e1; }
+  .meta b { color: white; }
+  .synthetic { margin-top: 8px; background: #fef3c7; border: 1px solid #f59e0b; color: #92400e; padding: 5px 10px; border-radius: 4px; font-weight: 600; font-size: 8pt; }
+  .filters { margin-top: 8px; font-size: 7.5pt; color: #475569; }
+  .filters span { display: inline-block; margin-right: 12px; }
+  h2 { font-size: 11pt; color: #0f2744; border-bottom: 2px solid #0d9488; padding-bottom: 3px; margin: 16px 0 8px; page-break-after: avoid; }
+  .kpis { display: flex; flex-wrap: wrap; gap: 6px; }
+  .kpi { width: 23.9%; border: 1px solid #e2e8f0; border-left: 3px solid #2563eb; border-radius: 4px; padding: 6px 8px; }
+  .kpi .l { font-size: 7pt; color: #64748b; text-transform: uppercase; letter-spacing: .03em; }
+  .kpi .v { font-size: 13pt; font-weight: 700; color: #0f172a; }
+  .kpi .c { font-size: 6.5pt; color: #94a3b8; }
+  .kpi.oee { border-left-color: #0d9488; background: #f0fdfa; }
+  table { width: 100%; border-collapse: collapse; font-size: 7.5pt; page-break-inside: auto; }
+  tr { page-break-inside: avoid; }
+  th { background: #f1f5f9; color: #334155; text-align: left; padding: 4px 6px; font-weight: 600; border-bottom: 1px solid #cbd5e1; }
+  td { padding: 3.5px 6px; border-bottom: 1px solid #f1f5f9; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+  td.n { white-space: nowrap; }
+  .section { page-break-inside: avoid; margin-bottom: 6px; }
+  .section.long { page-break-inside: auto; }
+  .chart svg { width: 100%; height: auto; }
+  .sev { font-weight: 700; padding: 1px 5px; border-radius: 3px; font-size: 6.5pt; text-transform: uppercase; }
+  .sev.critical { background: #fee2e2; color: #b91c1c; } .sev.high { background: #ffedd5; color: #c2410c; }
+  .sev.medium { background: #fef9c3; color: #a16207; } .sev.low { background: #e0f2fe; color: #0369a1; }
+  .note { color: #64748b; font-size: 7pt; margin-top: 4px; }
+  .pos { color: #047857; } .neg { color: #b91c1c; }
+  .empty { padding: 20px; text-align: center; color: #64748b; border: 1px dashed #cbd5e1; border-radius: 6px; }
+  .expl { color: #475569; font-size: 7pt; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <div class="brand">FactoryPulse AI</div>
+    <h1>{{ r.title }}</h1>
+    <div class="company">{{ r.company_name }}</div>
+  </div>
+  <div class="meta">
+    {{ t('period') }}<br><b>{{ period }}</b><br>
+    {{ t('generated') }}: {{ generated }}
+  </div>
+</div>
+{% if r.is_synthetic %}<div class="synthetic">{{ t('synthetic') }}</div>{% endif %}
+<div class="filters"><b>{{ t('filters') }}:</b>
+  {% for label, value in r.filters_text %}<span>{{ label }}: {{ value }}</span>{% endfor %}
+</div>
+
+{% if not r.has_data %}
+  <h2>{{ t('kpi_summary') }}</h2>
+  <div class="empty">{{ t('no_data') }}</div>
+{% else %}
+<h2>{{ t('kpi_summary') }}</h2>
+<div class="kpis">
+  {% for k in r.kpis %}
+  <div class="kpi {% if k.key == 'oee' %}oee{% endif %}">
+    <div class="l">{{ k.label }}</div>
+    <div class="v">{{ k.display }}</div>
+    {% if k.coverage is not none and k.coverage < 0.999 %}<div class="c">{{ t('coverage') }}: {{ '%.0f' % (k.coverage * 100) }} %</div>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+<div class="note">{{ t('formulas') }} {{ t('na_note') }}</div>
+
+<div class="section">
+<h2>{{ t('comparison') }}</h2>
+<table>
+  <tr><th>{{ t('metric') }}</th><th class="n">{{ t('current') }}<br><small>{{ period }}</small></th><th class="n">{{ t('previous') }}<br><small>{{ previous }}</small></th><th class="n">{{ t('change') }}</th></tr>
+  {% for c in r.comparison %}
+  <tr><td>{{ c.label }}</td><td class="n">{{ c.current }}</td><td class="n">{{ c.previous }}</td><td class="n">{{ c.change }}</td></tr>
+  {% endfor %}
+</table>
+</div>
+
+{% for s in sections %}
+<div class="section {% if s.table and s.table.rows|length > 14 %}long{% endif %}">
+  <h2>{{ s.title }}</h2>
+  {% if s.chart %}<div class="chart">{{ s.chart }}</div>{% endif %}
+  {% if s.table %}
+  <table>
+    <tr>{% for h in s.table.headers %}<th class="{% if loop.index0 >= s.table.numeric_from %}n{% endif %}">{{ h }}</th>{% endfor %}</tr>
+    {% for row in s.table.rows %}
+    <tr>{% for c in row %}<td class="{% if loop.index0 >= s.table.numeric_from %}n{% endif %}">{{ c }}</td>{% endfor %}</tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endfor %}
+
+<div class="section long">
+<h2>{{ t('anomalies') }}</h2>
+{% if r.anomaly_status != 'ok' %}
+  <div class="note">{{ r.extra.anomaly_message }}</div>
+{% elif not anomalies %}
+  <div class="note">{{ t('no_anomalies') }}</div>
+{% else %}
+<table>
+  <tr><th>{{ t('date') }}</th><th>{{ t('entity') }}</th><th>{{ t('metric') }}</th><th class="n">{{ t('observed') }}</th><th class="n">{{ t('baseline') }}</th><th>{{ t('severity') }}</th></tr>
+  {% for a in anomalies %}
+  <tr><td>{{ a.date }}</td><td>{{ a.entity }}</td><td>{{ a.metric }}</td><td class="n">{{ a.observed }}</td><td class="n">{{ a.baseline }}</td><td><span class="sev {{ a.severity }}">{{ a.severity_label }}</span></td></tr>
+  <tr><td></td><td colspan="5" class="expl">{{ a.explanation }}</td></tr>
+  {% endfor %}
+</table>
+{% endif %}
+<div class="note">{{ t('anomaly_note') }}</div>
+</div>
+{% endif %}
+</body>
+</html>

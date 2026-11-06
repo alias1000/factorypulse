@@ -1,0 +1,18 @@
+# Versions verified by the automated test suite (pytest, Python 3.12+/3.13).
+fastapi==0.143.3
+uvicorn[standard]==0.53.0
+pydantic==2.13.5
+pydantic-settings==2.16.0
+SQLAlchemy==2.1.5
+alembic==1.20.0
+psycopg[binary]==3.3.6
+pandas==3.0.5
+numpy==2.5.3
+scikit-learn==1.9.1
+openpyxl==3.1.5
+defusedxml==0.7.1
+weasyprint==70.0
+Jinja2==3.1.6
+matplotlib==3.11.2
+python-multipart==0.0.32
+argon2-cffi==25.1.0
